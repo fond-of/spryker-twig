@@ -2,15 +2,14 @@
 
 namespace FondOfSpryker\Zed\Twig\Business;
 
-use Spryker\Zed\Twig\Business\TwigBusinessFactory as SprykerTwigBusinessFactory;
 use FondOfSpryker\Zed\Twig\Business\Model\TemplatePathMapBuilder\TemplatePathMapBuilder;
+use Spryker\Zed\Twig\Business\TwigBusinessFactory as SprykerTwigBusinessFactory;
 
 /**
  * @method \Spryker\Zed\Twig\TwigConfig getConfig()
  */
 class TwigBusinessFactory extends SprykerTwigBusinessFactory
 {
-
     /**
      * @return \FondOfSpryker\Zed\Twig\Business\Model\TemplatePathMapBuilder\TemplatePathMapBuilder
      */

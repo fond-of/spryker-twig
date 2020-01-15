@@ -18,7 +18,7 @@ class TemplatePathMapBuilder extends SprykerTemplatePathMapBuilder
         foreach ($templatePathMap as $key => $item) {
             if (strpos($key, $activeStore)) {
                 $find = str_replace($activeStore, '', $key);
-                if (array_key_exists($find, $templatePathMap)){
+                if (array_key_exists($find, $templatePathMap)) {
                     $templatePathMap[$find] = $item;
                     unset($templatePathMap[$key]);
                 }
