@@ -18,8 +18,6 @@ class TemplateValidator implements TemplateValidatorInterface
     protected $twigZed;
 
     /**
-     * TemplateValidator constructor.
-     *
      * @param \Spryker\Shared\Twig\TwigFilesystemLoader $twigYves
      * @param \Spryker\Shared\Twig\TwigFilesystemLoader $twigZed
      */
