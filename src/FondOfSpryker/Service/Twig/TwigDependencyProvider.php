@@ -6,7 +6,7 @@ use Spryker\Service\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Service\Kernel\Container;
 use Spryker\Yves\Kernel\ClassResolver\Factory\FactoryResolver as YvesFactoryResolver;
 use Spryker\Yves\Twig\TwigFactory as YvesTwigFactory;
-use Spryker\Zed\Kernel\ClassResolver\Factory\FactoryResolver as ZedFactoryResolver;
+use Spryker\Zed\Kernel\ClassResolver\Communication\CommunicationFactoryResolver;
 use Spryker\Zed\Twig\Communication\TwigCommunicationFactory as ZedTwigCommunicationFactory;
 
 class TwigDependencyProvider extends AbstractBundleDependencyProvider
@@ -107,8 +107,8 @@ class TwigDependencyProvider extends AbstractBundleDependencyProvider
     /**
      * @return \Spryker\Zed\Kernel\ClassResolver\Factory\FactoryResolver
      */
-    private function getZedFactoryResolver(): ZedFactoryResolver
+    private function getZedFactoryResolver(): CommunicationFactoryResolver
     {
-        return new ZedFactoryResolver();
+        return new CommunicationFactoryResolver();
     }
 }
