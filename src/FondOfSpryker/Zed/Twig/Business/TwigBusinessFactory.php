@@ -3,6 +3,7 @@
 namespace FondOfSpryker\Zed\Twig\Business;
 
 use FondOfSpryker\Zed\Twig\Business\Model\TemplatePathMapBuilder\TemplatePathMapBuilder;
+use Spryker\Shared\Kernel\Store;
 use Spryker\Zed\Twig\Business\TwigBusinessFactory as SprykerTwigBusinessFactory;
 
 /**
@@ -11,30 +12,30 @@ use Spryker\Zed\Twig\Business\TwigBusinessFactory as SprykerTwigBusinessFactory;
 class TwigBusinessFactory extends SprykerTwigBusinessFactory
 {
     /**
-     * @return \FondOfSpryker\Zed\Twig\Business\Model\TemplatePathMapBuilder\TemplatePathMapBuilder
+     * @return \Spryker\Zed\Twig\Business\Model\TemplatePathMapBuilderInterface
      */
     protected function createTemplatePathMapBuilderForZed()
     {
-        $templatePathMapBuilder = new TemplatePathMapBuilder(
-            $this->createFinder(),
-            $this->createTemplateNameBuilderZed(),
-            $this->getConfig()->getZedDirectoryPathPatterns()
-        );
+        $baseTemplatePathMapBuilderForZed = parent::createTemplatePathMapBuilderForZed();
 
-        return $templatePathMapBuilder;
+        return new TemplatePathMapBuilder($baseTemplatePathMapBuilderForZed, $this->getCurrentStore());
     }
 
     /**
-     * @return \FondOfSpryker\Zed\Twig\Business\Model\TemplatePathMapBuilder\TemplatePathMapBuilder
+     * @return \Spryker\Zed\Twig\Business\Model\TemplatePathMapBuilderInterface
      */
     protected function createTemplatePathMapBuilderForYves()
     {
-        $templatePathMapBuilder = new TemplatePathMapBuilder(
-            $this->createFinder(),
-            $this->createTemplateNameBuilderYves(),
-            $this->getConfig()->getYvesDirectoryPathPatterns()
-        );
+        $baseTemplatePathMapBuilderForYves= parent::createTemplatePathMapBuilderForYves();
 
-        return $templatePathMapBuilder;
+        return new TemplatePathMapBuilder($baseTemplatePathMapBuilderForYves, $this->getCurrentStore());
+    }
+
+    /**
+     * @return \Spryker\Shared\Kernel\Store
+     */
+    protected function getCurrentStore(): Store
+    {
+        return Store::getInstance();
     }
 }
